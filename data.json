@@ -1,0 +1,28 @@
+[    {
+        "id": 1,
+        "title": "First post",
+        "author":"Ama Ata Aidoo",
+        "content": "Lorem Ipsum",
+        "numberOfUpVotes":0,
+        "numberOfDownVotes":0,
+        "createdAt": "Mon Aug 27 2018 15:16:17 GMT+0200 (CEST)"
+    },
+    {
+        "id": 2,
+        "title": "Second post",
+        "author":"Ama Ata Aidoo",
+        "content": "Lorem Ipsum again",
+        "numberOfUpVotes":0,
+        "numberOfDownVotes":0,
+        "createdAt": "Mon Aug 27 2018 16:17:18 GMT+0200 (CEST)"
+    },
+    {
+        "id": 3,
+        "title": "Third post",
+        "author":"koo",
+        "content": "Lorem Ipsum again",
+        "numberOfUpVotes":0,
+        "numberOfDownVotes":0,
+        "createdAt": "Mon Aug 27 2018 16:17:18 GMT+0200 (CEST)"
+    }
+]
