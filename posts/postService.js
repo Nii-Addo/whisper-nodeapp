@@ -1,14 +1,12 @@
 /*
 **Load dependencies
 */
-var fs=require('fs');
-var path=require('path');
+var fs=require('fs').promises;
 var postsPath='../data.json';
 var posts=require(postsPath);
 
 
-const createPost=(newPost)=>{
-	return new Promise((resolve,reject)=>{
+const createPost=async(newPost)=>{
 
 		  	//create new id for post
 		    const id=generateNewId(posts);	
@@ -26,17 +24,9 @@ const createPost=(newPost)=>{
 		    //push new object to array of post
 			posts.push(postToSave);
 
-		//	console.log(posts);
-
 			//appendto file
-			fs.writeFile(postsPath, JSON.stringify(posts), (err) => {
-			  if (err){
-			  	reject (err);
-			  } 
-			  resolve(posts);
-			});
-	
-	})
+			await fs.writeFile(postsPath, JSON.stringify(posts),'utf8');
+			return posts;
 }		
 
 

@@ -1,8 +1,16 @@
 /*
 ** Call module dependencies
 */
+var createError = require('http-errors');
 var express=require('express');
 var logger=require('morgan');
+var session= require('express-session');
+
+/*
+** Call in router dependencies
+*/
+var postsRouter=require('./posts/postRoutes');
+var registrationRouter=require('./registration/registrationRoutes');
 
 
 /*
@@ -16,18 +24,20 @@ var app=express();
 */
 app.use(express.json());
 app.use(logger('dev'));
-/*
-** Call in router dependencies
-*/
-var postsRouter=require('./posts/postRoutes');
-
+app.use(express.urlencoded({ extended: false }));
+app.use(session({
+  secret: 'InAtypicalWebappIwilluseAlongerString,MaybeSomethingLike1234567890OkAmTiredNow.',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: true }
+}));
 
 
 /*
 ** Setup routes from dependencies
 */
 app.use('/posts',postsRouter);
-
+app.use('/account',registrationRouter);
 
 
 // catch 404 and forward to error handler

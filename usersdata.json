@@ -1,0 +1,16 @@
+[
+	{
+		"id":1,
+		"email":"test@test.com",
+		"fullName":"test user",
+		"password":"password",
+		"passwordConfirmation":"password"
+	},
+	{
+		"id":2,
+		"fullName": "test user",
+        "email": "test11@test.com",
+        "password": "$2a$12$NARKOGSUTptb.UiZo2P5Kucf9gwPodDUWNKQb69EFtWgbfBL2/C0C",
+        "role": "user"
+	}
+]

@@ -5,7 +5,9 @@
 const app= require('../app');
 const http =require('http');
 const debug=require('debug')('http');
+const mongoose = require('mongoose')
 
+require('dotenv').config();
 
 /**
  * Get port from environment and store in Express.
@@ -19,6 +21,30 @@ app.set('port', port);
 * Create http server
 */
 const server=http.createServer(app);
+
+
+/*
+**connect to database
+*/
+const uri=process.env.ATLAS_URI;
+const options = {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: false,
+  autoIndex: false, // Don't build indexes
+  poolSize: 10, // Maintain up to 10 socket connections
+  serverSelectionTimeoutMS: 5000, // Keep trying to send operations for 5 seconds
+  socketTimeoutMS: 45000, // Close sockets after 45 seconds of inactivity
+  family: 4 // Use IPv4, skip trying IPv6
+};
+mongoose.connect(uri,options)
+.catch(error => console.log("Database Error:" + error));
+/*handleError(error));*/
+const connection=mongoose.connection;
+connection.once('open',()=>{console.log("MongoDb database connection established successfully")});
+
+
 
 
 /**
